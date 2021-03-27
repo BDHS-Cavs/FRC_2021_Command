@@ -26,5 +26,7 @@ Winch();
 
     void Periodic() override;
     void SimulationPeriodic() override;
+    void Raise();
+    void Lower();
 };
 
