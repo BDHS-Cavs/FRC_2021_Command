@@ -28,5 +28,7 @@ void Periodic() override;
 void SimulationPeriodic() override;
 void Expel();
 void Intake();
+void PullIn();
+void PullOut();
 };
 

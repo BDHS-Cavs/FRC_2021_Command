@@ -47,3 +47,13 @@ void Shooter::Intake() {
     m_shooterLeft.Set(-0.75);
     m_shooterRight.Set(-0.75);
 }
+
+void Shooter::PullIn() {
+    wpi::outs() << "Pulley In.\n";
+    m_pulleyMotor.Set(-0.75);
+}
+
+void Shooter::PullOut() {
+    wpi::outs() << "Pulley Out.\n";
+    m_pulleyMotor.Set(0.75);
+}
