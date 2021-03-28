@@ -8,7 +8,6 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-
 #pragma once
 
 #include <frc2/command/CommandHelper.h>

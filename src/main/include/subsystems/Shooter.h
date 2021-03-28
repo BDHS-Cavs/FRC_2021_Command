@@ -11,17 +11,22 @@
 #pragma once
 
 #include <frc2/command/SubsystemBase.h>
+#include <rev/CANSparkMax.h>
 #include <frc/Spark.h>
 
 class Shooter: public frc2::SubsystemBase {
 private:
 
-frc::Spark m_pulleyMotor{4};
+frc::Spark m_pulleyMotor{5};
+rev::CANSparkMax m_shooterLeft{2, rev::CANSparkMax::MotorType::kBrushless};
+rev::CANSparkMax m_shooterRight{1, rev::CANSparkMax::MotorType::kBrushless};
 
 public:
 Shooter();
 
-    void Periodic() override;
-    void SimulationPeriodic() override;
+void Periodic() override;
+void SimulationPeriodic() override;
+void Expel();
+void Intake();
 };
 
