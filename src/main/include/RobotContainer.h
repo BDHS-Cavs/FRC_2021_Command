@@ -18,11 +18,6 @@
 #include "subsystems/Shooter.h"
 #include "subsystems/Drive.h"
 
-
-#include "subsystems/Drive.h"
-#include "subsystems/Shooter.h"
-#include "subsystems/Winch.h"
-
 #include "commands/AutonomousCommand.h"
 #include "commands/Move.h"
 #include "commands/PulleyIn.h"
@@ -48,7 +43,6 @@ public:
 Winch   m_winch;
 Shooter m_shooter;
 Drive   m_drive;
-
 
 frc::Joystick* getJoystick();
 frc::XboxController* getController();
