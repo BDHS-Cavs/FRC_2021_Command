@@ -27,13 +27,15 @@ void Move::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void Move::Execute() {
     // get values from the Joystick
-    //TODO: get real joystick input
-    double ySpeed = 0.1;
-    double xSpeed = 0.2;
-    double zRotation = 0.3;
+    //auto const & joystick = RobotContainer::getJoystick();
 
-    // pass values to the Drive subsystem
-    m_drive->Motivate(ySpeed, xSpeed, zRotation);
+    ////TODO: get real joystick input
+    //double ySpeed = 0.1;
+    //double xSpeed = 0.2;
+    //double zRotation = 0.3;
+
+    //// pass values to the Drive subsystem
+    //m_drive->Motivate(ySpeed, xSpeed, zRotation);
 }
 
 // Make this return true when this Command no longer needs to run execute()
