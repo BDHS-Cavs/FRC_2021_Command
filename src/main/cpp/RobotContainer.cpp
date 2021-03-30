@@ -10,12 +10,12 @@
 
 #include "RobotContainer.h"
 #include <frc2/command/ParallelRaceGroup.h>
+#include <frc2/command/RunCommand.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 
 RobotContainer* RobotContainer::m_robotContainer = NULL;
 
-RobotContainer::RobotContainer() : m_autonomousCommand(
-){
+RobotContainer::RobotContainer() : m_autonomousCommand(){
     frc::SmartDashboard::PutData(&m_drive);
     frc::SmartDashboard::PutData(&m_shooter);
     frc::SmartDashboard::PutData(&m_winch);
@@ -33,6 +33,16 @@ RobotContainer::RobotContainer() : m_autonomousCommand(
     frc::SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
 
     ConfigureButtonBindings();
+
+    // Set up default drive command
+    m_drive.SetDefaultCommand(frc2::RunCommand(
+        [this] {
+            m_drive.Motivate(
+                m_joystick.GetY(),
+                m_joystick.GetX(),
+                m_joystick.GetTwist());
+      },
+      {&m_drive}));
 
     m_chooser.SetDefaultOption("Autonomous Command", new AutonomousCommand());
 
@@ -64,6 +74,7 @@ m_controllerButton4.WhenPressed(WinchIncrementDown(&m_winch), true);
 m_controllerButton3.WhenPressed(WinchIncrementUp(&m_winch), true);
 m_controllerButton2.WhenPressed(WinchDown(&m_winch), true);
 m_controllerButton1.WhenPressed(WinchUp(&m_winch), true);
+m_joystick.SetTwistChannel(2);
 }
 
 frc::Joystick* RobotContainer::getJoystick() {
