@@ -44,18 +44,19 @@ void Drive::SimulationPeriodic() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
-void Drive::Motivate(double ySpeed, double xSpeed, double zRotation){
+void Drive::Motivate(double xSpeed, double ySpeed, double zRotation){
     // This SHOULD NOT HAVE TO BE DONE!!
     // Every document and API says we should feed the DriveCartesian function as follows:
     //
     // m_robotDrive.DriveCartesian(ySpeed, xSpeed, zRotation, gyroAngle);
     //
     // but our bot does not respond that way.  We have done the following:
-    // reversed the Y and X inputs into the function
+    // "flipped" the X so it's inputs are inverted
     // "flipped" the Y so it's inputs are inverted
     // added a dead zone to the Z so it is less touchy
 
     double flippedY = (ySpeed * -1.0);
+    double flippedX = (xSpeed * -1.0);
     double z;
     double deadZone = 0.25;
 
@@ -68,5 +69,5 @@ void Drive::Motivate(double ySpeed, double xSpeed, double zRotation){
         z = zRotation;
     };
 
-    m_mecanumDrive.DriveCartesian(xSpeed, flippedY, z);
+    m_mecanumDrive.DriveCartesian(flippedX, flippedY, z);
 }

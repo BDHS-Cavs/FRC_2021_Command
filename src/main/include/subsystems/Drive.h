@@ -26,5 +26,5 @@ public:
 Drive();
     void Periodic() override;
     void SimulationPeriodic() override;
-    void Motivate(double ySpeed, double xSpeed, double zRotation);
+    void Motivate(double xSpeed, double ySpeed, double zRotation);
 };
