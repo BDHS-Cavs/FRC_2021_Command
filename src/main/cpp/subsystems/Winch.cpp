@@ -40,10 +40,22 @@ void Winch::Raise(){
 }
 
 void Winch::Lower(){
-    wpi::outs() << "Going Down.\n";
+    m_winchTimer.Reset();
+    m_winchTimer.Start();
+    while (m_winchTimer.Get() <= 1.0)
+    {
+        // raise winch
+        wpi::outs() << "In Timer.  Raise winch slightly while adjusting actuator.\n";
+        m_winchMotor.Set(0.5);
+        // move actuator
+        m_winchServo.SetAngle(50);
+    }
+
+    // stop timer
+    m_winchTimer.Stop();
+    // lower winch
+    wpi::outs() << "Outside of Timer.  Lower winch.\n";
     m_winchMotor.Set(-0.5);
-    wpi::outs() << "Activate Actuator.\n";
-    m_winchServo.SetAngle(50);
 }
 
 void Winch::WinchStop(){
