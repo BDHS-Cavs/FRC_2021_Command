@@ -21,7 +21,6 @@ RobotContainer::RobotContainer() : m_autonomousCommand(){
     frc::SmartDashboard::PutData(&m_winch);
 
     // SmartDashboard Buttons
-    frc::SmartDashboard::PutData("Move", new Move( &m_drive ));
     frc::SmartDashboard::PutData("PulleyIn", new PulleyIn( &m_shooter ));
     frc::SmartDashboard::PutData("PulleyOut", new PulleyOut( &m_shooter ));
     frc::SmartDashboard::PutData("ShootIn", new ShootIn( &m_shooter ));
