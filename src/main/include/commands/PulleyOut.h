@@ -15,7 +15,6 @@
 
 #include "subsystems/Shooter.h"
 
-
 class PulleyOut: public frc2::CommandHelper<frc2::CommandBase, PulleyOut> {
 public:
     explicit PulleyOut(Shooter* m_shooter);

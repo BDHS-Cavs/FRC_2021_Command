@@ -30,5 +30,7 @@ void Expel();
 void Intake();
 void PullIn();
 void PullOut();
+void PulleyStop();
+void ShooterStop();
 };
 

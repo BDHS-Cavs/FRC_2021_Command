@@ -21,12 +21,11 @@ PulleyOut::PulleyOut(Shooter* m_shooter)
 
 // Called just before this Command runs the first time
 void PulleyOut::Initialize() {
-
+    m_shooter->PullOut();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void PulleyOut::Execute() {
-    m_shooter->PullOut();
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -36,7 +35,8 @@ bool PulleyOut::IsFinished() {
 
 // Called once after isFinished returns true
 void PulleyOut::End(bool interrupted) {
-
+    m_shooter->PulleyStop();
+    wpi::outs() << "Pulley Stop Called from Pulley Out.\n";
 }
 
 bool PulleyOut::RunsWhenDisabled() const {

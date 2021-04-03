@@ -15,22 +15,22 @@ Drive::Drive(){
     SetName("Drive");
     SetSubsystem("Drive");
 
- AddChild("leftRear", &m_leftRear);
- m_leftRear.SetInverted(false);
+    AddChild("leftRear", &m_leftRear);
+    m_leftRear.SetInverted(false);
 
- AddChild("rightRear", &m_rightRear);
- m_rightRear.SetInverted(false);
+    AddChild("rightRear", &m_rightRear);
+    m_rightRear.SetInverted(false);
 
- AddChild("leftFront", &m_leftFront);
- m_leftFront.SetInverted(false);
+    AddChild("leftFront", &m_leftFront);
+    m_leftFront.SetInverted(false);
 
- AddChild("rightFront", &m_rightFront);
- m_rightFront.SetInverted(false);
+    AddChild("rightFront", &m_rightFront);
+    m_rightFront.SetInverted(false);
 
- AddChild("Mecanum Drive", &m_mecanumDrive);
- m_mecanumDrive.SetSafetyEnabled(true);
- m_mecanumDrive.SetExpiration(0.1);
- m_mecanumDrive.SetMaxOutput(1.0);
+    AddChild("Mecanum Drive", &m_mecanumDrive);
+    m_mecanumDrive.SetSafetyEnabled(true);
+    m_mecanumDrive.SetExpiration(0.1);
+    m_mecanumDrive.SetMaxOutput(1.0);
 }
 
 void Drive::Periodic() {

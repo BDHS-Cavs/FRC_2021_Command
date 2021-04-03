@@ -34,7 +34,8 @@ bool WinchDown::IsFinished() {
 
 // Called once after isFinished returns true
 void WinchDown::End(bool interrupted) {
-
+    m_winch->WinchStop();
+    wpi::outs() << "Winch Stop called from WinchDown.\n";
 }
 
 bool WinchDown::RunsWhenDisabled() const {

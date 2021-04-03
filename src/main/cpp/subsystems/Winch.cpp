@@ -36,12 +36,19 @@ void Winch::Raise(){
     wpi::outs() << "Going Up.\n";
     m_winchMotor.Set(0.5);
     wpi::outs() << "Activate Actuator.\n";
-    m_winchServo.SetAngle(-25);
+    m_winchServo.SetAngle(50);
 }
 
 void Winch::Lower(){
     wpi::outs() << "Going Down.\n";
     m_winchMotor.Set(-0.5);
     wpi::outs() << "Activate Actuator.\n";
-    m_winchServo.SetAngle(-25);
+    m_winchServo.SetAngle(50);
+}
+
+void Winch::WinchStop(){
+    wpi::outs() << "WinchStop.\n";
+    m_winchMotor.Set(0.0);
+    wpi::outs() << "Activate Actuator.\n";
+    m_winchServo.SetAngle(100);
 }

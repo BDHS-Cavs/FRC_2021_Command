@@ -16,13 +16,8 @@ Shooter::Shooter(){
     SetSubsystem("Shooter");
 
     AddChild("PulleyMotor", &m_pulleyMotor);
-    //TODO: must define and determine how to use CAN bus in this architecture
-    //AddChild("ShooterLeftMotor", &m_shooterLeft);
-    //AddChild("ShooterRightMotor", &m_shooterRight);
 
     m_pulleyMotor.SetInverted(false);
-    //m_shooterLeft.SetInverted(false);
-    //m_shooterRight.SetInverted(false);
 }
 
 void Shooter::Periodic() {
@@ -38,12 +33,14 @@ void Shooter::SimulationPeriodic() {
 
 void Shooter::Expel() {
     wpi::outs() << "Shoot Out.\n";
+    m_pulleyMotor.Set(-0.75);
     m_shooterLeft.Set(0.75);
     m_shooterRight.Set(0.75);
 }
 
 void Shooter::Intake() {
     wpi::outs() << "Intake.\n";
+    m_pulleyMotor.Set(0.75);
     m_shooterLeft.Set(-0.75);
     m_shooterRight.Set(-0.75);
 }
@@ -56,4 +53,15 @@ void Shooter::PullIn() {
 void Shooter::PullOut() {
     wpi::outs() << "Pulley Out.\n";
     m_pulleyMotor.Set(0.75);
+}
+
+void Shooter::PulleyStop(){
+    m_pulleyMotor.Set(0.0);
+}
+
+void Shooter::ShooterStop(){
+    wpi::outs() << "Shooter Stop.\n";
+    m_shooterLeft.Set(0.0);
+    m_shooterRight.Set(0.0);
+    m_pulleyMotor.Set(0.0);
 }

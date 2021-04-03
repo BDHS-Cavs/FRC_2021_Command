@@ -21,12 +21,11 @@ PulleyIn::PulleyIn(Shooter* m_shooter)
 
 // Called just before this Command runs the first time
 void PulleyIn::Initialize() {
-
+    m_shooter->PullIn();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void PulleyIn::Execute() {
-    m_shooter->PullIn();
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -36,7 +35,8 @@ bool PulleyIn::IsFinished() {
 
 // Called once after isFinished returns true
 void PulleyIn::End(bool interrupted) {
-
+    m_shooter->PulleyStop();
+    wpi::outs() << "Pulley Stop Called from Pulley In.\n";
 }
 
 bool PulleyIn::RunsWhenDisabled() const {

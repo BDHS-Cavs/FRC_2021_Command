@@ -66,14 +66,14 @@ frc2::JoystickButton m_controllerButton3{&m_controller, (int)frc::XboxController
 frc2::JoystickButton m_controllerButton2{&m_controller, (int)frc::XboxController::Button::kB};
 frc2::JoystickButton m_controllerButton1{&m_controller, (int)frc::XboxController::Button::kX};
 
-m_controllerButton8.WhenPressed(PulleyIn(&m_shooter), true);
-m_controllerButton7.WhenPressed(PulleyOut(&m_shooter), true);
-m_controllerButton6.WhenPressed(ShootIn(&m_shooter), true);
-m_controllerButton5.WhenPressed(ShootOut(&m_shooter), true);
-m_controllerButton4.WhenPressed(WinchIncrementDown(&m_winch), true);
-m_controllerButton3.WhenPressed(WinchIncrementUp(&m_winch), true);
-m_controllerButton2.WhenPressed(WinchDown(&m_winch), true);
-m_controllerButton1.WhenPressed(WinchUp(&m_winch), true);
+m_controllerButton8.WhenHeld(PulleyIn(&m_shooter), true);
+m_controllerButton7.WhenHeld(PulleyOut(&m_shooter), true);
+m_controllerButton6.WhenHeld(ShootIn(&m_shooter), true);
+m_controllerButton5.WhenHeld(ShootOut(&m_shooter), true);
+m_controllerButton4.WhenHeld(WinchIncrementDown(&m_winch), true);
+m_controllerButton3.WhenHeld(WinchIncrementUp(&m_winch), true);
+m_controllerButton2.WhenHeld(WinchDown(&m_winch), true);
+m_controllerButton1.WhenHeld(WinchUp(&m_winch), true);
 m_joystick.SetTwistChannel(2);
 }
 
