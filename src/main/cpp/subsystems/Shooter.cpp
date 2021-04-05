@@ -33,9 +33,15 @@ void Shooter::SimulationPeriodic() {
 
 void Shooter::Expel() {
     wpi::outs() << "Shoot Out.\n";
-    m_pulleyMotor.Set(-0.75);
+
+    // reset & start the timer
+    m_pulleyTimer.Reset();
+    m_pulleyTimer.Start();
+
+    // crank up the neos
     m_shooterLeft.Set(0.75);
     m_shooterRight.Set(0.75);
+    m_pulleyMotor.Set(-0.75);
 }
 
 void Shooter::Intake() {

@@ -13,6 +13,7 @@
 #include <frc2/command/SubsystemBase.h>
 #include <rev/CANSparkMax.h>
 #include <frc/Spark.h>
+#include <frc/Timer.h>
 
 class Shooter: public frc2::SubsystemBase {
 private:
@@ -20,6 +21,7 @@ private:
 frc::Spark m_pulleyMotor{5};
 rev::CANSparkMax m_shooterLeft{2, rev::CANSparkMax::MotorType::kBrushless};
 rev::CANSparkMax m_shooterRight{1, rev::CANSparkMax::MotorType::kBrushless};
+frc::Timer m_pulleyTimer;
 
 public:
 Shooter();

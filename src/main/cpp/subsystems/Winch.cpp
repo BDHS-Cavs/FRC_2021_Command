@@ -33,16 +33,23 @@ void Winch::SimulationPeriodic() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void Winch::Raise(){
-    wpi::outs() << "Going Up.\n";
+    m_winchTimer.Reset();
+    m_winchTimer.Start();
+    while (m_winchTimer.Get() < 1.0)
+    {
+        // move actuator
+        m_winchServo.SetAngle(50);
+    }
+    // stop timer
+    m_winchTimer.Stop();
+    // raise the winch
     m_winchMotor.Set(0.5);
-    wpi::outs() << "Activate Actuator.\n";
-    m_winchServo.SetAngle(50);
 }
 
 void Winch::Lower(){
     m_winchTimer.Reset();
     m_winchTimer.Start();
-    while (m_winchTimer.Get() <= 1.0)
+    while (m_winchTimer.Get() < 0.5)
     {
         // raise winch
         wpi::outs() << "In Timer.  Raise winch slightly while adjusting actuator.\n";
@@ -51,11 +58,11 @@ void Winch::Lower(){
         m_winchServo.SetAngle(50);
     }
 
-    // stop timer
-    m_winchTimer.Stop();
     // lower winch
     wpi::outs() << "Outside of Timer.  Lower winch.\n";
     m_winchMotor.Set(-0.5);
+    // stop timer
+    m_winchTimer.Stop();
 }
 
 void Winch::WinchStop(){
