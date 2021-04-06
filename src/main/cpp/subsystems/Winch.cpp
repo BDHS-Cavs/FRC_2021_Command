@@ -37,7 +37,7 @@ void Winch::Raise(){
 
     wpi::outs() << "Reverse Solenoid";
     // move actuator 
-    m_winchSolenoid.Set(frc::DoubleSolenoid::Value::kReverse);
+    m_winchSolenoid.Set(frc::DoubleSolenoid::Value::kForward);
 
     wpi::outs() << "Raise Winch.\n";
     // raise the winch
@@ -48,7 +48,7 @@ void Winch::Lower(){
 
     wpi::outs() << "Reverse Solenoid";
     // move actuator
-    m_winchSolenoid.Set(frc::DoubleSolenoid::Value::kReverse);
+    m_winchSolenoid.Set(frc::DoubleSolenoid::Value::kForward);
 
     wpi::outs() << "Lower Winch.\n";
     // lower winch
@@ -59,5 +59,5 @@ void Winch::WinchStop(){
     wpi::outs() << "WinchStop.\n";
     m_winchMotor.Set(0.0);
     wpi::outs() << "Set Solenoid Forward.\n";
-    m_winchSolenoid.Set(frc::DoubleSolenoid::Value::kForward);
+    m_winchSolenoid.Set(frc::DoubleSolenoid::Value::kReverse);
 }
