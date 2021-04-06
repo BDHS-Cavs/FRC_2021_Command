@@ -62,8 +62,8 @@ frc2::JoystickButton m_controllerButton6{&m_controller, (int)frc::XboxController
 frc2::JoystickButton m_controllerButton5{&m_controller, (int)frc::XboxController::Button::kBumperLeft};
 frc2::JoystickButton m_controllerButton4{&m_controller, (int)frc::XboxController::Button::kA};
 frc2::JoystickButton m_controllerButton3{&m_controller, (int)frc::XboxController::Button::kY};
-frc2::JoystickButton m_controllerButton2{&m_controller, (int)frc::XboxController::Button::kB};
-frc2::JoystickButton m_controllerButton1{&m_controller, (int)frc::XboxController::Button::kX};
+frc2::JoystickButton m_controllerButton2{&m_controller, (int)frc::XboxController::Button::kX};
+frc2::JoystickButton m_controllerButton1{&m_controller, (int)frc::XboxController::Button::kB};
 
 m_controllerButton8.WhenHeld(PulleyIn(&m_shooter), true);
 m_controllerButton7.WhenHeld(PulleyOut(&m_shooter), true);
