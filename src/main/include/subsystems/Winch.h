@@ -12,16 +12,14 @@
 
 #include <frc2/command/SubsystemBase.h>
 #include <frc/AnalogPotentiometer.h>
-#include <frc/Servo.h>
+#include <frc/DoubleSolenoid.h>
 #include <frc/Spark.h>
-#include <frc/Timer.h>
 
 class Winch: public frc2::SubsystemBase {
 private:
 frc::AnalogPotentiometer m_potentiometer{3, 1.0, 0.1};
 frc::Spark m_winchMotor{4};
-frc::Servo m_winchServo{6};
-frc::Timer m_winchTimer;
+frc::DoubleSolenoid m_winchSolenoid{0, 1};
 
 public:
 Winch();
@@ -32,4 +30,3 @@ Winch();
     void Lower();
     void WinchStop();
 };
-

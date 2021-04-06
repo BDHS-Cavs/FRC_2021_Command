@@ -17,10 +17,11 @@ Winch::Winch(){
     SetSubsystem("Winch");
 
     AddChild("Potentiometer", &m_potentiometer);
-    AddChild("Servo",         &m_winchServo);
+    AddChild("Double Solenoid", &m_winchSolenoid);
     AddChild("WinchMotor",    &m_winchMotor);
 
     m_winchMotor.SetInverted(false);
+    m_winchSolenoid.Set(frc::DoubleSolenoid::Value::kOff);
 }
 
 void Winch::Periodic() {
@@ -33,41 +34,30 @@ void Winch::SimulationPeriodic() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void Winch::Raise(){
-    m_winchTimer.Reset();
-    m_winchTimer.Start();
-    while (m_winchTimer.Get() < 1.0)
-    {
-        // move actuator
-        m_winchServo.SetAngle(50);
-    }
-    // stop timer
-    m_winchTimer.Stop();
+
+    wpi::outs() << "Reverse Solenoid";
+    // move actuator 
+    m_winchSolenoid.Set(frc::DoubleSolenoid::Value::kReverse);
+
+    wpi::outs() << "Raise Winch.\n";
     // raise the winch
     m_winchMotor.Set(0.5);
 }
 
 void Winch::Lower(){
-    m_winchTimer.Reset();
-    m_winchTimer.Start();
-    while (m_winchTimer.Get() < 0.5)
-    {
-        // raise winch
-        wpi::outs() << "In Timer.  Raise winch slightly while adjusting actuator.\n";
-        m_winchMotor.Set(0.5);
-        // move actuator
-        m_winchServo.SetAngle(50);
-    }
 
+    wpi::outs() << "Reverse Solenoid";
+    // move actuator
+    m_winchSolenoid.Set(frc::DoubleSolenoid::Value::kReverse);
+
+    wpi::outs() << "Lower Winch.\n";
     // lower winch
-    wpi::outs() << "Outside of Timer.  Lower winch.\n";
     m_winchMotor.Set(-0.5);
-    // stop timer
-    m_winchTimer.Stop();
 }
 
 void Winch::WinchStop(){
     wpi::outs() << "WinchStop.\n";
     m_winchMotor.Set(0.0);
-    wpi::outs() << "Activate Actuator.\n";
-    m_winchServo.SetAngle(100);
+    wpi::outs() << "Set Solenoid Forward.\n";
+    m_winchSolenoid.Set(frc::DoubleSolenoid::Value::kForward);
 }
